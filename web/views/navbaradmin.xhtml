@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background-color: #9deda6;">
+    <h:link class="navbar-brand" outcome="view_pelanggan.xhtml">Rental Mobil Sukses</h:link>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <h:link class="nav-link" outcome="view_mobil.xhtml">Mobil</h:link>
+      </li>
+      <li class="nav-item">
+        <h:link class="nav-link" outcome="view_pelanggan.xhtml">Pelanggan</h:link>
+      </li>
+      <li class="nav-item">
+        <h:link class="nav-link" outcome="view_transaksi.xhtml">Transaksi</h:link>
+      </li>
+        <h:form><h:commandLink class="btn btn-danger" style=" right: 20px; position: absolute;" action="#{tblAdmin.logout()}">Logout</h:commandLink></h:form>
+    </ul>
+  </div>
+</nav>
+    
+</html>

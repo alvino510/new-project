@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Rental Mobil Sukses</title>
+        <ui:include src="views/head.xhtml"/>
+    </h:head>
+    <h:body>
+        <ui:include src="views/navbaradmin.xhtml"/>
+        
+        <div class="container mt-5 mb-5 d-flex justify-content-center" style="width:50%;">
+            <div class="card px-1 py-4 cardform">
+                <div class="card-body">
+                    <h6 class="card-title mb-3">Selamat datang, #{nama}</h6>
+
+                    <h6 class="information mt-4">Formulir Transaksi:</h6>
+                    <h:form>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group"> 
+                                    <h:inputText disabled="true" class="alert alert-danger align-items-center" value="#{tblTrx.msgError}" rendered="#{tblTrx.gagalError}"/>
+                                    <h:inputText disabled="true" class="alert alert-success align-items-center" value="#{tblTrx.message}" rendered="#{tblTrx.gagalMsg}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                     
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group"> 
+                                <div class="input-group">
+                                    <h:inputText value="#{tblTrx.idTrx}" class="form-control" pt:placeholder="ID Transaksi, TR###"/>                            
+                                </div> 
+                                <div class=" d-flex flex-column text-center px-5 mt-3 mb-3">
+                                    <h:commandButton value="Cek ID" class="btn btn-primary btn-block confirm-button" action="#{tblTrx.getbyid()}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group"> 
+                                    <h:inputText value="#{tblTrx.pelangganId}" class="form-control" pt:placeholder="ID Pelanggan"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group"> 
+                                    <h:inputText value="#{tblTrx.tanggalSewa}" class="form-control" pt:placeholder="Tanggal Sewa"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group"> 
+                                    <h:inputText value="#{tblTrx.tanggalSelesai}" class="form-control" pt:placeholder="Tanggal Selesai"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group"> 
+                                    <h:inputText value="#{tblTrx.mobilId}" class="form-control" pt:placeholder="ID Mobil"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group"> 
+                                    <h:inputText value="#{tblTrx.biaya}" class="form-control" pt:placeholder="Biaya"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <h:commandButton value="Update" class="btn btn-success px-2 buttonpelanggan" action="#{tblTrx.update()}"/>
+                        <h:commandButton value="Delete" class="btn btn-danger px-2 buttonpelanggan" action="#{tblTrx.delete()}"/>
+                        <h:commandButton value="Tambah" class="btn btn-primary px-2 buttonpelanggan" action="#{tblTrx.save()}"/>
+                        <h:commandButton value="Reset Kolom" class="btn btn-secondary px-2 buttonpelanggan d-flex flex-row-reverse" action="#{tblTrx.reset()}"/>
+                    </h:form>
+                </div>
+            </div>           
+        </div>
+        <div class="container" style="width: 50%;">
+            <h:form>
+                <b:dataTable value="#{tblTrx.getallrecords()}"
+           var="tblTrx" caption="DATA TRANSAKSI">
+           
+             <b:dataTableColumn value="#{tblTrx.idTrx}" />
+            <b:dataTableColumn value="#{tblTrx.pelangganId}" />
+            <b:dataTableColumn value="#{tblTrx.tanggalSewa}" />
+            <b:dataTableColumn value="#{tblTrx.tanggalSelesai}"/>
+            <b:dataTableColumn value="#{tblTrx.mobilId}"/>
+            <b:dataTableColumn value="#{tblTrx.biaya}"/>
+        </b:dataTable>
+        </h:form>
+        </div>
+        <br/>
+        <div class="container" style="width: 50%;">
+            <h:form>
+                <b:dataTable value="#{tblMobil.getallrecords()}"
+           var="tblMobil" caption="DATA MOBIL">
+           
+             <b:dataTableColumn value="#{tblMobil.idMobil}" />
+            <b:dataTableColumn value="#{tblMobil.merek}" />
+            <b:dataTableColumn value="#{tblMobil.tipe}" />
+            <b:dataTableColumn value="#{tblMobil.warna}"/>
+            <b:dataTableColumn value="#{tblMobil.biaya}"/>
+        </b:dataTable>
+        </h:form>
+        </div>
+        <br/>
+        <div class="container" style="width: 50%;">
+            <h:form>
+                <b:dataTable value="#{tblPelanggan.getallrecords()}"
+           var="tblPelanggan" caption="DATA PELANGGAN">
+           
+             <b:dataTableColumn value="#{tblPelanggan.idPelanggan}" />
+            <b:dataTableColumn value="#{tblPelanggan.noKtp}" />
+            <b:dataTableColumn value="#{tblPelanggan.nama}" />
+            <b:dataTableColumn value="#{tblPelanggan.alamat}"/>
+            <b:dataTableColumn value="#{tblPelanggan.noTelp}"/>
+            <b:dataTableColumn value="#{tblPelanggan.email}"/>
+        </b:dataTable>
+        </h:form>
+        </div>
+        
+    </h:body>
+</html>
+

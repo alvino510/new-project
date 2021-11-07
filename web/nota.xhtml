@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Rental Mobil Sukses</title>
+        <ui:include src="views/head.xhtml"/>
+    </h:head>
+    <h:body>
+        <ui:include src="views/navbaradmin.xhtml"/>
+        <div class="container">
+            
+            <div class="row">
+            <div class="col-xs-12 col-xs-updated">
+                <center>
+                    <b:container style="width: 40%; background-color: #dcffbd;">
+                                 <h:form styleClass="form-signin" prependId="false">
+                                     <br/>
+                                     <h:outputLabel style="font-family: Centaur; font-size: 35px">Data Transaksi</h:outputLabel>
+                                     <b:alert severity="danger" value="#{tblTrx.msgError}" rendered="#{tblTrx.gagalError}"/>
+                                     <b:alert severity="success" value="#{tblTrx.message}" rendered="#{tblTrx.gagalMsg}"/>
+                                     <br/><br/>
+                                     <table>
+                                         <tr>
+                                             <td>
+                                                 <h:outputLabel style="font-family: Centaur; font-size: 24px">ID Transaksi</h:outputLabel>
+                                             </td>
+                                             <td width="5%"></td>
+                                             <td>
+                                                 <b:inputText style="font-family: Centaur;
+                                                              font-size: 18px" placeholder="ID"
+                                                              value="#{tblTrx.idTrx}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">ID Pelanggan</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputText style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="ID Pelanggan"
+                                                              value="#{tblTrx.pelangganId}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Tanggal Sewa</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputText style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="Tanggal Sewa"
+                                                              value="#{tblTrx.tanggalSewa}"><f:convertDateTime timeZone="GMT+7" pattern="yyyy-MM-dd"/></b:inputText>
+                                                              
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Tanggal Selesai</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputText style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="Tanggal Selesai"
+                                                              value="#{tblTrx.tanggalSelesai}"><f:convertDateTime timeZone="GMT+7" pattern="yyyy-MM-dd"/></b:inputText>
+                                                              
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">ID Mobil</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputTextarea style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="ID Mobil"
+                                                              value="#{tblTrx.mobilId}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Biaya</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputText style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="Biaya"
+                                                              value="#{tblTrx.biaya}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td colspan="3">
+                                                 <center>
+                                                     <b:commandButton look="primary btn-success" value="SAVE"
+                                                                      icon="save" action="#{tblTrx.save}"/>
+                                                     &nbsp;&nbsp;&nbsp;
+                                                     <b:commandButton look="primary btn-success" value="RESET"
+                                                                      icon="reset" action="#{tblTrx.reset}"/>
+                                                     &nbsp;&nbsp;&nbsp;
+                                                     <a href="view_transaksi.xhtml" class="btn btn-sm btn-primary mt-3">Kembali</a>
+                                                 </center>
+                                             </td>
+                                         </tr>
+                                     </table>
+                                     <br/>
+                        </h:form>
+                    </b:container>
+                    <div class="container" style="width:100%;">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID Trx</th>
+                        <th scope="col">ID Pelanggan</th>
+                        <th scope="col">Tanggal Sewa</th>
+                        <th scope="col">Tanggal Selesai</th>
+                        <th scope="col">ID Mobil</th>
+                        <th scope="col">Biaya</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+            <ui:repeat value="#{tblTrx.getallrecords()}" var="tblTrx">
+                      <tr>
+                          <th>#{tblTrx.idTrx}</th>
+                          <td>#{tblTrx.pelangganId}</td>
+                          <td>#{tblTrx.tanggalSewa}</td>
+                          <td>#{tblTrx.tanggalSelesai}</td>
+                          <td>#{tblTrx.mobilId}</td>
+                          <td>#{tblTrx.biaya}</td>
+                      </tr>
+            </ui:repeat>
+                        
+                    
+                    </tbody>
+                </table>
+        </div>
+                    
+        
+                    <b:dataTable value="#{tblMobil.getallrecords()}"
+           var="tblMobil"
+           caption="DATA MOBIL">
+             <b:dataTableColumn value="#{tblMobil.idMobil}" />
+            <b:dataTableColumn value="#{tblMobil.merek}" />
+            <b:dataTableColumn value="#{tblMobil.tipe}" />
+            <b:dataTableColumn value="#{tblMobil.warna}"/>
+            <b:dataTableColumn value="#{tblMobil.biaya}"/>
+        </b:dataTable>
+                    
+                    <b:dataTable value="#{tblPelanggan.getallrecords()}"
+           var="tblPelanggan"
+           caption="DATA PELANGGAN">
+             <b:dataTableColumn value="#{tblPelanggan.idPelanggan}" />
+            <b:dataTableColumn value="#{tblPelanggan.nama}" />
+            <b:dataTableColumn value="#{tblPelanggan.noKtp}" />
+            <b:dataTableColumn value="#{tblPelanggan.alamat}"/>
+            <b:dataTableColumn value="#{tblPelanggan.noTelp}"/>
+            <b:dataTableColumn value="#{tblPelanggan.email}"/>
+        </b:dataTable>
+                </center>
+            </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+
