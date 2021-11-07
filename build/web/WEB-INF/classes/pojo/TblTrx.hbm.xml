@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2021 4:04:37 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.TblTrx" table="tbl_trx" catalog="mobil_rental" optimistic-lock="version">
+        <id name="idTrx" type="string">
+            <column name="id_trx" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="pelangganId" type="string">
+            <column name="pelanggan_id" length="5" not-null="true" />
+        </property>
+        <property name="tanggalSewa" type="date">
+            <column name="tanggal_sewa" length="10" not-null="true" />
+        </property>
+        <property name="tanggalSelesai" type="date">
+            <column name="tanggal_selesai" length="10" not-null="true" />
+        </property>
+        <property name="mobilId" type="string">
+            <column name="mobil_id" length="8" not-null="true" />
+        </property>
+        <property name="biaya" type="int">
+            <column name="biaya" length="11" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

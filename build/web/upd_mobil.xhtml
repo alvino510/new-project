@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Rental Mobil Sukses</title>
+        <ui:include src="views/head.xhtml"/>
+    </h:head>
+    <h:body>
+        <ui:include src="views/navbaradmin.xhtml"/>
+        <div class="container">
+            
+            <div class="row">
+            <div class="col-xs-12 col-xs-updated">
+                <center>
+                    <b:container style="width: 40%; background-color: #dcffbd;">
+                                 <h:form styleClass="form-signin" prependId="false" enctype="multipart/form-data">
+                                     <br/>
+                                     <h:outputLabel style="font-family: Centaur; font-size: 35px">Data Mobil</h:outputLabel>
+                                     <b:alert severity="danger" value="#{tblMobil.msgError}" rendered="#{tblMobil.gagalError}"/>
+                                     <b:alert severity="success" value="#{tblMobil.message}" rendered="#{tblMobil.gagalMsg}"/>
+                                     <br/><br/>
+                                     <table>
+                                         <tr>
+                                             <td>
+                                                 <h:outputLabel style="font-family: Centaur; font-size: 24px">ID Mobil</h:outputLabel>
+                                             </td>
+                                             <td width="5%"></td>
+                                             <td>
+                                                 <b:inputText style="font-family: Centaur;
+                                                              font-size: 18px" placeholder="Masukan ID = No. Plat"
+                                                              value="#{tblMobil.idMobil}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td></td>
+                                             <td></td>
+                                             <td>
+                                                 <center>
+                                                     <b:commandButton look="primary btn-success" value="Cari Data Transaksi"
+                                                                      icon="search" action="#{tblMobil.getbyid}"/>
+                                                 </center>
+                                                 <br/>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Merek</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputText style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="Merek"
+                                                              value="#{tblMobil.merek}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Tipe</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputText style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="Tipe"
+                                                              value="#{tblMobil.tipe}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Warna</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputText style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="Warna"
+                                                              value="#{tblMobil.warna}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Biaya</h:outputLabel></td>
+                                             <td></td>
+                                             <td><b:inputText style="font-family: Centaur; 
+                                                              font-size: 18px" placeholder="Biaya"
+                                                              value="#{tblMobil.biaya}"/></td>
+                                         </tr>
+                                         <tr>
+                                             <td colspan="3">
+                                                 <center>
+                                                     <b:commandButton look="primary btn-success" value="UPDATE"
+                                                                      icon="save" action="#{tblMobil.update}"/>
+                                                     &nbsp;&nbsp;&nbsp;
+                                                     <b:commandButton look="primary btn-success" value="RESET"
+                                                                      icon="reset" action="#{tblMobil.reset}"/>
+                                                     &nbsp;&nbsp;&nbsp;
+                                                     <a href="view_mobil.xhtml" class="btn btn-sm btn-primary mt-3">Kembali</a>
+                                                 </center>
+                                             </td>
+                                         </tr>
+                                     </table>
+                                     <br/>
+                        </h:form>
+                    </b:container>
+                    <b:dataTable value="#{tblMobil.getallrecords()}"
+           var="tblMobil"
+           caption="DATA MOBIL">
+             <b:dataTableColumn value="#{tblMobil.idMobil}" />
+            <b:dataTableColumn value="#{tblMobil.merek}" />
+            <b:dataTableColumn value="#{tblMobil.tipe}" />
+            <b:dataTableColumn value="#{tblMobil.warna}"/>
+            <b:dataTableColumn value="#{tblMobil.biaya}"/>
+        </b:dataTable>
+                </center>
+            </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

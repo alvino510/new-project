@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2021 4:04:37 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.TblMobil" table="tbl_mobil" catalog="mobil_rental" optimistic-lock="version">
+        <id name="idMobil" type="string">
+            <column name="id_mobil" length="8" />
+            <generator class="assigned" />
+        </id>
+        <property name="merek" type="string">
+            <column name="merek" length="55" not-null="true" />
+        </property>
+        <property name="tipe" type="string">
+            <column name="tipe" length="55" not-null="true" />
+        </property>
+        <property name="warna" type="string">
+            <column name="warna" length="55" not-null="true" />
+        </property>
+        <property name="biaya" type="int">
+            <column name="biaya" not-null="true" />
+        </property>
+        <property name="gambar" type="string">
+            <column name="gambar" length="255" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
