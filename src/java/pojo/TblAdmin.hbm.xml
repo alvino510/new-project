@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2021 4:04:37 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.TblAdmin" table="tbl_admin" catalog="mobil_rental" optimistic-lock="version">
+        <id name="idAdmin" type="java.lang.Integer">
+            <column name="id_admin" />
+            <generator class="identity" />
+        </id>
+        <property name="nama" type="string">
+            <column name="nama" length="55" not-null="true" />
+        </property>
+        <property name="alamat" type="string">
+            <column name="alamat" length="65535" not-null="true" />
+        </property>
+        <property name="usia" type="int">
+            <column name="usia" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="10" not-null="true" />
+        </property>
+        <property name="noTelp" type="string">
+            <column name="no_telp" length="12" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="25" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="55" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="55" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
